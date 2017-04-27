@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="positions">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="top|center|left|right|bottom"/>
+    </xs:restriction>
+  </xs:simpleType>
+ <xs:simpleType name="colorhex">
+        <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="#[0-9a-fA-F]{6}"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="layout">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="active_resolution">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="horizontal" type="xs:unsignedShort" />
+                    <xs:element name="vertical" type="xs:unsignedShort" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="inner_frame">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="position">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="x" type="xs:unsignedShort" />
+                          <xs:element name="y" type="xs:unsignedShort" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="size">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="width" type="xs:unsignedShort" />
+                          <xs:element name="height" type="xs:unsignedShort" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="border">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="thickness" type="xs:unsignedByte" />
+                          <xs:element name="color" type="colorhex" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="toolbars">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="toolbar">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="position">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="x" type="xs:unsignedShort" />
+                                <xs:element name="y" type="xs:unsignedShort" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="size">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="width" type="xs:unsignedShort" />
+                                <xs:element name="height" type="xs:unsignedShort" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="border">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="thickness" type="xs:unsignedByte" />
+                                <xs:element name="color" type="colorhex" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="element_layout">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="unbounded" name="element">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="position">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="x" type="xs:unsignedShort" />
+                                            <xs:element name="y" type="xs:unsignedShort" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="size">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="width" type="xs:unsignedShort" />
+                                            <xs:element name="height" type="xs:unsignedShort" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="border">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="thickness" type="xs:unsignedByte" />
+                                            <xs:element name="color" type="colorhex" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="layer_id">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="hide_layer" type="xs:boolean" />
+                                            <xs:element name="lock_layer" type="xs:boolean" />
+                                          </xs:sequence>
+                                          <xs:attribute name="id" type="xs:unsignedByte" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="color_slider">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="red" type="colorhex" />
+                                            <xs:element name="green" type="colorhex" />
+                                            <xs:element name="blue" type="colorhex" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="enable_filters" type="xs:boolean" />
+                                      <xs:element minOccurs="0" name="look">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="shape">
+                                              <xs:complexType>
+                                                <xs:attribute name="shape" type="xs:string" use="required" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="corners">
+                                              <xs:complexType>
+                                                <xs:attribute name="radius" type="xs:unsignedByte" use="required" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="color">
+                                              <xs:complexType>
+                                                <xs:attribute name="color" type="colorhex" use="required" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element minOccurs="0" name="name">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="name_position">
+                                                    <xs:complexType>
+                                                      <xs:attribute name="position" type="xs:string" use="required" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute name="name" type="xs:string" use="required" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element minOccurs="0" name="name_position">
+                                              <xs:complexType>
+                                                <xs:attribute name="position" type="xs:string" use="required" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="lock_ratio" type="xs:boolean" />
+                                      <xs:element minOccurs="0" name="properties">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" name="default_font" type="xs:string" />
+                                            <xs:element minOccurs="0" name="default_shape" type="xs:string" />
+                                            <xs:element minOccurs="0" name="default_diameter" type="xs:unsignedByte" />
+                                            <xs:element minOccurs="0" name="default_color" type="colorhex" />
+                                            <xs:element minOccurs="0" name="default_size" type="xs:unsignedByte" />
+                                            <xs:element minOccurs="0" name="default_gradient" type="xs:unsignedByte" />
+                                            <xs:element minOccurs="0" name="default_opacity" type="xs:unsignedByte" />
+                                            <xs:element minOccurs="0" maxOccurs="unbounded" name="style" type="xs:string" />
+                                            <xs:element minOccurs="0" maxOccurs="unbounded" name="preset" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" type="xs:string" use="required" />
+                                    <xs:attribute name="icon" type="xs:string" use="optional" />
+                                    <xs:attribute name="type" type="xs:string" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="key_mapping">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="keyboard">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="key">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="mapped_key" type="xs:string" />
+                          <xs:element name="mapped_to" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="picture">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="file_extension" type="xs:string" />
+              <xs:element name="file_default_size">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="width" type="xs:unsignedShort" />
+                    <xs:element name="height" type="xs:unsignedShort" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="pic_default_color">
+                <xs:complexType>
+                  <xs:attribute name="color" type="colorhex" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="default_name" type="xs:string" use="required" />
+            <xs:attribute name="defautl_extension" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

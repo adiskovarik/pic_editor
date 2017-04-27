@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Adam Kovařík - Picture Editor</title>
+</head>
+<body>
+    <h1>Adam Kovařík - Picture Editor</h1>
+    <nav>
+        <h2>Navigace</h2>
+        <ul>
+            <li><a href="#uvod">Úvod</a></li>
+            <li><a href="#metodika">Metodika</a></li>
+            <li>
+                <a href="#popis">Popis elementů a atributů</a>
+                <ul>
+                    <li><a href="#elementy">Elementy</a></li>
+                    <li><a href="#atributy">Atributy</a></li>
+                </ul>
+            </li>
+            <li><a href="#transformace">Popis transformace</a></li>
+            <li><a href="#zaver">Závěr</a></li>
+            <li><a href="#autor">Autor</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <header>
+                <a id="uvod"></a>
+                <h2>Úvod</h2>
+                <p>
+                    Zadání je vytvořit nastavení aplikace ve formátu .xml s přidruženými soubory jako je schéma .xsd,<br>
+                    transformace do JSON nebo .html - já si zvolil .html výstup.
+                </p>
+            </header>
+        </section>
+        <hr />
+        <section>
+            <header>
+                <a id="metodika"></a>
+                <h2>Metodika</h2>
+                <h3>Použité nástroje</h3>
+                <ul>
+                    <li>Google Chrome</li>
+                    <li>stránky W3 pro validaci</li>
+                    <li>stránky Free Formater pro transformaci do html</li>
+                    <li>Visual studio</li>
+                    <li>Sublime Text</li>
+                </ul>
+                <p>
+                    Většina práce probíhala v Sublime Textu a Visual studiu 2015.<br>
+                    Nejdřív jsem vytvořil soubor .xml, i když by jsem měl začít .xsd, ale můj přístup mi přišel jednodušší.<br>
+                    Vytvořil jsemt tedy .xml soubor a ve visual studiu vygenetoval .xsd a upravil podle svého.<br>
+                    Vytvořil jsem soubor xsl v Sublime Textu a provedl Transformaci.<br>
+                    Toto html jsem vytvořil v Sublime Textu a testoval zobrazení v Google Chromu. Další prohlížeče nejsou potřeba,<br>
+                    základní HTML5 kód by se měl zobrazovat všude stejně.
+                </p>
+            </header>
+        </section>
+        <hr />
+        <section>
+            <header>
+                <a id="popis"></a>
+                <h2>Popis elementů a atributů</h2>
+                <a id="elementy"></a>
+                <h3>Elementy</h3>
+                <table>
+                    <tr>
+                        <th>Element</th>
+                        <th>Popis</th>
+                        <th>Hodnoty</th>
+                    </tr>
+                    <tr>
+                        <td>root</td>
+                        <td>základní kořenový uzel</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>layout</td>
+                        <td>základní kořenový uzel pro rozmístění prvků</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>active_resolution</td>
+                        <td>aktivní rozlišení</td>
+                        <td>Ushort</td>
+                    </tr>
+                    <tr>
+                        <td>inner_frame</td>
+                        <td>uzel pro vnitřní rám</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>position</td>
+                        <td>pozice objektu</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>x</td>
+                        <td>souřadnice x</td>
+                        <td>Ushort</td>
+                    </tr>
+                    <tr>
+                        <td>y</td>
+                        <td>souřadnice y</td>
+                        <td>Ushort</td>
+                    </tr>
+                    <tr>
+                        <td>size</td>
+                        <td>velikost objektu</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>width</td>
+                        <td>šířka objektu</td>
+                        <td>Ushort</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td>výška objektu</td>
+                        <td>Ushort</td>
+                    </tr>
+                    <tr>
+                        <td>border</td>
+                        <td>rámeček objektu</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>thickness</td>
+                        <td>tloušťka objektu</td>
+                        <td>Byte</td>
+                    </tr>
+                    <tr>
+                        <td>color</td>
+                        <td>barva objektu</td>
+                        <td>pattern value="#[0-9a-fA-F]{6}"</td>
+                    </tr>
+                    <tr>
+                        <td>toolbars</td>
+                        <td>základní uzel pro toolbary</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>toolbar</td>
+                        <td>objekt toolbar</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>element_layout</td>
+                        <td>rozmístění prvků v toolbaru</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>element</td>
+                        <td>prvek toolbaru</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>look</td>
+                        <td>vzhled prvku v toolbaru</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>shape</td>
+                        <td>tvar prvku</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>corners</td>
+                        <td>zaoblení rohů</td>
+                        <td>Byte</td>
+                    </tr>
+                    <tr>
+                        <td>name_position</td>
+                        <td>mpozice názvu prvku</td>
+                        <td>pattern value="top|center|left|right|bottom"</td>
+                    </tr>
+                    <tr>
+                        <td>properties</td>
+                        <td>vlastnosti prvku</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>preset</td>
+                        <td>preset filtru</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>style</td>
+                        <td>styl transformace</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>lock_ratio</td>
+                        <td>uzamknutí poměru stran</td>
+                        <td>Boolean</td>
+                    </tr>
+                    <tr>
+                        <td>default_shape</td>
+                        <td>základní tvar</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>default_diameter</td>
+                        <td>základní průměr</td>
+                        <td>Byte</td>
+                    </tr>
+                    <tr>
+                        <td>default_color</td>
+                        <td>základní barva</td>
+                        <td>pattern value="#[0-9a-fA-F]{6}"</td>
+                    </tr>
+                    <tr>
+                        <td>default_gradient</td>
+                        <td>základní tvrdost</td>
+                        <td>Byte</td>
+                    </tr>
+                    <tr>
+                        <td>default_opacity</td>
+                        <td>základní průhlednost</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>default_font</td>
+                        <td>základní font</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>default_size</td>
+                        <td>základní velikost</td>
+                        <td>Byte</td>
+                    </tr>
+                    <tr>
+                        <td>layer_id</td>
+                        <td>id vrstvy</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>hide_layer</td>
+                        <td>schovat vrstvu</td>
+                        <td>bool</td>
+                    </tr>
+                    <tr>
+                        <td>lock_layer</td>
+                        <td>zamknout vrstvu</td>
+                        <td>bool</td>
+                    </tr>
+                    <tr>
+                        <td>key_mapping</td>
+                        <td>základní uzel pro mapování kláves</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>keyboard</td>
+                        <td>uzel pro klávesy klávesnice</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>key</td>
+                        <td>makro na klávesnici</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>mapped_key</td>
+                        <td>namapovaná klávesa</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>mapped_to</td>
+                        <td>činnost na kterou je klávesa namapovaná</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>picture</td>
+                        <td>základní uzel pro vytvořený obrázek</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>file_extension</td>
+                        <td>přípona souboru</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>file_default_size</td>
+                        <td>základní velikost nově vytvořeného obrázku</td>
+                        <td>Ushort</td>
+                    </tr>
+                    <tr>
+                        <td>pic_default_color</td>
+                        <td>základní barva nově vytvořeného obrázku</td>
+                        <td>pattern value="#[0-9a-fA-F]{6}"</td>
+                    </tr>
+                </table>
+                <a id="atributy"></a>
+                <h3>Atributy</h3>
+                <table>
+                    <tr>
+                        <th>Atribut</th>
+                        <th>Popis</th>
+                        <th>Hodnoty</th>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>název objektu</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>icon</td>
+                        <td>ikona objektu</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>typ objektu</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>shape</td>
+                        <td>tvar objektu</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>radius</td>
+                        <td>zaoblení rohů</td>
+                        <td>Byte</td>
+                    </tr>
+                    <tr>
+                        <td>color</td>
+                        <td>barva objektu</td>
+                        <td>pattern value="#[0-9a-fA-F]{6}"</td>
+                    </tr>
+                    <tr>
+                        <td>position</td>
+                        <td>pozice názvu objektu</td>
+                        <td>pattern value="top|center|left|right|bottom"</td>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>id vrstvy</td>
+                        <td>Byte</td>
+                    </tr>
+                    <tr>
+                        <td>default_name</td>
+                        <td>základní jméno nového obrázku</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>default_extension</td>
+                        <td>základní přípona nového obrázku</td>
+                        <td>String</td>
+                    </tr>
+                </table>
+            </header>
+        </section>
+        <hr />
+        <section>
+            <header>
+                <a id="transformace"></a>
+                <h2>Popis transformace</h2>
+                <p>
+                    Cílem transformace bylo vytvořit seznam Toolbarů s jejich prvky a seznam namapovaných kláves s jejich akcemi. <br>
+                    Transformace byla provedena do html na stránkách <a href="http://www.freeformatter.com/xsl-transformer.html">Free formater</a>.
+                    <br>
+                    Toto řešení jsem zvolit pro možnost vygenerovat html bez dalších programů.<br>
+                    Html výstupu není validní podle <a href="https://validator.w3.org/">Validator W3.</a>
+                </p>
+                <p>
+                    Transformace byla provedena skupinou do sebe zanořených for-each cyklů, které při spuštění vytvořili záhlaví tabulky<br>
+                    a při každém dalším cyklu prošli dalším elementem ve své úrovni. Smozřejmě by se takto dalo vytvořit komplexnější dokument,<br>
+                    ale předmětem transformace není vždy vypsaní všech možných informací. Pro zobrazení všech informací lze otevřít .xml soubor s<br>
+                    přidruženým .xsd v prohlížeči.
+                </p>
+            </header>
+        </section>
+        <hr />
+        <section>
+            <a id="zaver"></a>
+            <header>
+                <h2>Závěr</h2>
+                <p>
+                    Cílem bylo vytvořit konfiguraci aplikace.<br>
+                    To se podle mého podařilo i když jsem zvolil opačný postup a vygeneroval .xsd z .xml dokumentu.<br>
+                    Projekt je dostupný na <a href="https://github.com/adiskovarik/pic_editor">GitHub.</a>
+                </p>
+            </header>
+        </section>
+    </main>
+    <footer>
+        <a id="autor"></a>
+        <p>Autorem je Adam Kovařík. Vytvořeno roku 2017 na PEF ČZU na předmět Značkovací jazyky.</p>
+    </footer>
+</body>
+</html>
